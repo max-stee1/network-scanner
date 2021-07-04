@@ -1,7 +1,13 @@
 import argparse
 import subprocess
 import scapy.all as scapy
-import optparse
+# import optparse
+import os
+
+def sudo_permission():
+    if not 'SUDO_UID' in os.environ.keys():
+        print("Try running this program with sudo")
+        exit()
 
 def get_arguments():
     parser = argparse.ArgumentParser()
@@ -45,6 +51,7 @@ def print_result(result_list):
     for client in result_list:
         print(client['ip'] + '\t\t' + client['mac'] + '\t\t' + client['os'])
 
+sudo_permission()
 options = get_arguments()
 scan_result = scan(options.target)
 print_result(scan_result)
