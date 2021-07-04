@@ -1,4 +1,3 @@
-#!/bin/bash python
 import argparse
 import subprocess
 import scapy.all as scapy
